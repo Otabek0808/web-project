@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Bosh sahifa{% endblock title %}
+
+{% block style %}
+<style>
+    body {
+        opacity: 0.25;
+        background-image: url('../media/Alienware.jpg');
+        background-color: black;
+}
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+    <div class="container-xl p-3 mb-2 bg-primary-subtle text-primary-emphasis" style="margin: 3em auto">
+        <h1 style="">Assalomu aleykum..!</h1>
+        <hr class="border-2">
+        <p>Shaxsiy blogimga xush kelibsiz.</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <a href="{% url 'article_list' %}" type="submit" class="btn btn-primary">{% trans 'postlar' %}</a>
+
+<!--            <button type="submit">{% trans 'Chiqib ketish' %}</button>-->
+        </form>
+    </div>
+    {% if user.is_authenticated %}
+<!--        {{ user.username }}-->
+
+        <!-- <p><a href="{% url 'logout' %}">Chiqib ketish</a></p> -->
+    {% else %}
+<!--        <p>{% trans "Saytga kirmagansiz" %}</p>-->
+<!--        <a href="{% url 'login' %}">{% trans 'Login' %}</a>-->
+<!--        <a href="{% url 'signup' %}">{% trans 'Signup' %}</a>-->
+<!--        <a href="{% url 'password_reset' %}">{% trans 'password reset' %}</a>-->
+        <a href="{% url 'article_list' %}">{% trans 'postlar' %}</a>
+
+
+    {% endif %}
+{% endblock content %}
