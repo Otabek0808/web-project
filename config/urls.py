@@ -22,18 +22,13 @@ from django.views.generic.base import TemplateView
 from django.conf.urls.static import static # ishlamay qolsa buni qo'sh
 # from django.conf.urls import i18n
 
+
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-    # path('accounts/login/', include('accounts.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('articles/', include('articles.urls')),
     path('', TemplateView.as_view(template_name='home.html'),name='home'),
     # path(r'^i18n/', include('django.conf.urls.i18n')),
-
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

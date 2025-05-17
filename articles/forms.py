@@ -6,7 +6,7 @@ from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'summary', 'body', 'photo']
+        fields = ['title', 'summary', 'body', 'document']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -15,6 +15,6 @@ class ArticleForm(forms.ModelForm):
             Field('title', css_class='form-control'),
             Field('summary', css_class='form-control'),
             Field('body', css_class='form-control'),
-            Field('photo', css_class='form-control'),
+            # Field('photo', css_class='form-control'),
             Submit('submit', 'Saqlash', css_class='btn btn-primary')
         )

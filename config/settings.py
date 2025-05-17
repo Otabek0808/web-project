@@ -35,7 +35,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True  # Ishlatilayotgan muhitda True bo'lishi kerak
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']  # O'zingizning domeningizni qo'shing
 
@@ -149,7 +149,7 @@ LANGUAGES = [
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [BASE_DIR / "static",  ]# O'zgartiring yoki to'g'ri yo'lni ko'rsating
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -170,9 +170,9 @@ LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'  # Bootstrap 4 ni tanlang
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
-# MEDIA
+# MEDIA     
 MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # CKEDITORS CONFIG
 

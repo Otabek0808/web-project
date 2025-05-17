@@ -8,15 +8,18 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 class Article(models.Model):
-    title = models.CharField(max_length=150)
-    summary = models.CharField(max_length=200, blank=True)
-    body = HTMLField()
-    photo = models.ImageField(upload_to='images/', blank=True)
+    title = models.CharField(max_length=150, verbose_name="Maqola nomi")
+    summary = models.CharField(max_length=200, blank=True, verbose_name="Annotatsiya")
+    body = HTMLField(blank=True, verbose_name="Maqola matni")
+    # photo = models.ImageField(upload_to='images/', blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    document = models.FileField(upload_to='media/', verbose_name="fayl yuklash", )  # Hujjat fayli uchun qo'shimcha maydon
+
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
     )
+    approved = models.BooleanField(default=False)  # Admin tasdiqlash maydoni
     def __str__(self):
         return self.title
 

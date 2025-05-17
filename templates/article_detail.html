@@ -10,6 +10,9 @@
                 {% endif %}
                 <h1 class="card-title"> {{ object.title }} </h1>
                 <h6 class="card-subtitle mb-2 text-muted">Muallif: {{ object.author }} | {{ object.date }}</h6>
+                {% if article.document %}
+                    <a href="{{ article.document.url }}" target="_blank" class="btn btn-outline-success">Maqolani yuklash</a>
+                {% endif %}
                 <p class="card-text">{{ object.body | safe }}</p>
                 <a href="{% url 'article_edit' article.pk %}"class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Tahrirlash</a>
                 <a href="{% url 'article_delete' article.pk %}"class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">| O'chirish</a>

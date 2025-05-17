@@ -6,7 +6,7 @@ from django import forms
 class CustomUserCreationForm(UserCreationForm):
     class Meta():
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'birthday', 'address')
+        fields = ('username', 'first_name', 'last_name', 'birthday', 'email', 'address')
     error_class = forms.ValidationError
 
     first_name = forms.CharField(
@@ -36,14 +36,12 @@ class CustomUserCreationForm(UserCreationForm):
         })
     )
 
-    birthday = forms.DateTimeField(
-        widget=forms.DateInput(attrs={
-        'class': 'form-control mx-auto',
-        'placeholder': 'Tug\'ilgan yilingizni kiriting',
-        'type':'date',
-        }
-        ))
-
+    birthday = forms.IntegerField(
+        label='Yoshingizni kiriting:',
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control mx-auto',
+            'placeholder': 'Yoshingizni kiriting',
+        }))
     address = forms.CharField(
         max_length=100,
         required=False,
@@ -79,7 +77,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'birthday', 'address')
+        fields = ('username', 'first_name', 'last_name', 'birthday', 'email', 'address')
     error_class = forms.ValidationError
 
 
